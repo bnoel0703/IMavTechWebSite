@@ -50,7 +50,7 @@ namespace IMavTechWebSite
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseNodeModules(env.ContentRootPath);
+            //app.UseNodeModules(env.ContentRootPath);
             app.UseCookiePolicy();
 
             app.UseMvc(routes =>
