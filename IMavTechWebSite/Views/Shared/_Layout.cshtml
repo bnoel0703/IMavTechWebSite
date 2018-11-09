@@ -7,7 +7,7 @@
 
     <environment include="Development">
         <link rel="stylesheet" href="~/node_modules/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="~/node_modules/%40fortawesome/fontawesome-free/all.css" />
+        <link rel="stylesheet" href="~/node_modules/@("@")fortawesome/fontawesome-free/css/all.css" />
         <link rel="stylesheet" href="~/css/site.css" />
     </environment>
     <environment exclude="Development">
@@ -16,8 +16,8 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
               crossorigin="anonymous"
               integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" />
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" 
-              asp-fallback-href="~/node_modules/%40fortawesome/fontawesome-free/css/all.css"
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+              asp-fallback-href="~/node_modules/@("@")fortawesome/fontawesome-free/css/all.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absulute"
               crossorigin="anonymous"
               integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" />
@@ -32,7 +32,6 @@
                     <span class="sr-only">Toggle navigation</span>
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">IMavTech</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -41,6 +40,7 @@
                     <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
                 </ul>
             </div>
+            <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Image Placeholder</a>
         </div>
     </nav>
 
