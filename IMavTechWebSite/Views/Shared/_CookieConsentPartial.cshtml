@@ -8,7 +8,7 @@
 
 @if (showBanner)
 {
-    <nav id="cookieConsent" class="navbar navbar-light bg-light navbar-expand-md fixed-top" role="alert">
+    <nav id="cookieConsent" class="navbar navbar-light bg-light navbar-expand-md fixed-top alert-dismissible" role="alert">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#cookieConsent .navbar-collapse">
@@ -23,7 +23,7 @@
                 </p>
                 <div class="navbar-right">
                     <a asp-controller="Home" asp-action="Privacy" class="btn btn-info navbar-btn">Learn More</a>
-                    <button type="button" class="btn btn-default navbar-btn" data-cookie-string="@cookieString">Accept</button>
+                    <button type="button" class="btn btn-default navbar-btn close" data-dismiss="alert" data-cookie-string="@cookieString" aria-label="Close">Accept</button>
                 </div>
             </div>
         </div>

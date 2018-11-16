@@ -14,24 +14,24 @@ The main goal is to be a living resume. This website will showcase who I am as a
 * TypeScript
 * Bootstrap
 * JQuery
-* Wordpress(?)
+* Wordpress
 
 ### **Features**
 
 * Project Hosting
 * Project Showcase (with previews and browsing as an Angular SPA - the big cahuna of the site)
 * Small Biography
-* Resume Hosting and downloadable in both PDF and DOCX form
+* Resume Hosting and downloadable in both PDF and DOCX format
 * Blog (either custom built or through Wordpress)
-* Contact page with optional email
+* Contact form modal on Index
 
 #### TODO List
 
-* [ ] Flesh out static pages(Index, About, Contact)
+* [ ] Flesh out static pages(Index and About)
 * [ ] Apply Styling to static pages
 * [ ] Add Images
 * [ ] Add interactivity through Javascript/JQuery
 * [ ] Build SPA for Project Showcase
-* [ ] Build Blog or use Wordpress app
+* [ ] Use Wordpress app to create blog
 * [ ] Add projects to page
 * [ ] Have Success Tea! :tada:
