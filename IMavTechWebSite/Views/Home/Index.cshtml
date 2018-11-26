@@ -13,11 +13,25 @@
                 </button>
             </div>
             <div class="modal-body">
-                Body Placeholder
+                <form>
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email address</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter your preferred email address" required>
+                        <small id="emailHelp" class="form-text text-muted">I won't share your email with anyone. This is only for an open line of communication between you and I.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea id="description" name="description" rows="5" cols="35" placeholder="A short description of what you're looking for" required></textarea>
+                    </div>
+                </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Send Email</button>
+                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary btn-sm">Send Email</button>
             </div>
         </div>
     </div>
