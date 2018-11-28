@@ -7,7 +7,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class=modal-title" id="contactModalLabel">Get in Touch</h5>
+                <h5 class="modal-title" id="contactModalLabel"><i class="far fa-envelope"></i>  Get in Touch</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -25,24 +25,25 @@
                     </div>
                     <div class="form-group">
                         <label for="description">Description</label>
-                        <textarea id="description" name="description" rows="5" cols="35" placeholder="A short description of what you're looking for" required></textarea>
+                        <textarea id="description" name="description" rows="5" cols="50" placeholder="A short description of what you're looking for" required></textarea>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary btn-sm">Send Email</button>
+                <button type="button" class="btn btn-primary btn-sm" id="sendEmailButton">Send Email</button>
             </div>
         </div>
     </div>
 </div>
 <!-- Contact Modal End -->
 
+<!-- Main Page Start -->
 <header>
     <div class="jumbotron text-center shadow mb-5">
         <h1>Bryan Noel</h1>
         <h2>Full Stack .Net Developer</h2>
-        <button class="btn btn-lg btn-primary mt-2" data-toggle="modal" data-target="#contactModal">Get in Touch</button>
+        <button class="btn btn-lg btn-primary mt-2" data-toggle="modal" data-target="#contactModal"><i class="fas fa-envelope"></i>  Get in Touch</button>
     </div>
 </header>
 
@@ -85,6 +86,7 @@
         </div>
     </div>
 </main>
+<!-- Main Page End -->
     <!-- Timeline Start -->
 
     <!-- Timeline End -->
