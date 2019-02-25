@@ -12,11 +12,6 @@ body {
     padding-right: 15px;
 }
 
-/* Make .svg files in the carousel display properly in older browsers */
-.carousel-inner .item img[src$=".svg"] {
-    width: 100%;
-}
-
 #description {
     width: 100%;
     resize: none;
