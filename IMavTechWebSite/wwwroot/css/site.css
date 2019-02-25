@@ -17,6 +17,11 @@ body {
     width: 100%;
 }
 
+#description {
+    width: 100%;
+    resize: none;
+}
+
 /* QR code generator */
 #qrCode {
     margin: 15px;
