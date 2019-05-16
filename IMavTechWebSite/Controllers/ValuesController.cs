@@ -18,38 +18,13 @@ namespace IMavTechWebSite.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
-            var email = new Email();
-            email.Password = "Ayane*0870";
-            email.Body = "This is just a test";
-            email.FromEmailAddress = "bnoel@imavtech.com";
-            email.FromName = "IMavTech";
-            email.Port = 587;
-            email.Smtp = "mail.imavtech.com";
-            email.Subject = "Test Email";
-            email.ToEmailAddress = "maverick0870@hotmail.com";
-            email.ToName = "Bryan 'Maverick' Noel";
-            email.UserName = "bnoel@imavtech.com";
-            Send(email);
-
-            return new string[] { "Email Sent" };
+            return new string[] { "Email Placeholder" };
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
         public ActionResult<string> Get(int id)
         {
-            var email = new Email();
-            email.Password = "Ayane*0870";
-            email.Body = "This is just a test";
-            email.FromEmailAddress = "bnoel@imavtech.com";
-            email.FromName = "IMavTech";
-            email.Port = 587;
-            email.Smtp = "mail.imavtech.com";
-            email.Subject = "Test Email";
-            email.ToEmailAddress = "maverick0870@hotmail.com";
-            email.ToName = "Bryan 'Maverick' Noel";
-            email.UserName = "bnoel@imavtech.com";
-            Send(email);
             return "value";
         }
 
