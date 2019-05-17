@@ -40,6 +40,7 @@ namespace IMavTechWebSite
         {
             if (env.IsDevelopment())
             {
+                app.UseNodeModules(env);
                 app.UseDeveloperExceptionPage();
             }
             else
@@ -50,7 +51,6 @@ namespace IMavTechWebSite
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseNodeModules(env);
             app.UseCookiePolicy();
 
             app.UseMvc(routes =>

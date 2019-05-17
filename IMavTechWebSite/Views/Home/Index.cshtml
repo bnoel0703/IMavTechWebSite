@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IMavTechWebSite.Models.Email
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -13,36 +15,35 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form>
+                <form asp-action="Post" asp-controller="Values" method="post">
                     <div class="form-group">
-                        <label for="name">Your Name</label>
-                        <input type="text" class="form-control" id="name" placeholder="Enter your name" required />
+                        <label asp-for="FromName">Your Name</label>
+                        <input asp-for="FromName" class="form-control" placeholder="Enter your name" required />
                     </div>
                     <div class="form-group">
-                        <label for="email">Email address</label>
-                        <input type="email" class="form-control" id="email" placeholder="Enter your preferred email address" required />
-                        <small id="emailHelp" class="form-text text-muted">I won't share your email with anyone. This is only for an open line of communication between you and I.</small>
+                        <label asp-for="FromEmailAddress">Email address</label>
+                        <input asp-for="FromEmailAddress" class="form-control" placeholder="Enter your preferred email address" required />
+                        <small class="form-text text-muted">I won't share your email with anyone. This is only for an open line of communication between you and I.</small>
                     </div>
                     <div class="form-group">
-                        <label for="subject">Subject</label>
-                        <input type="text" class="form-control" id="subject" placeholder="Enter a subject for the message" required />
+                        <label asp-for="Subject">Subject</label>
+                        <input asp-for="Subject" class="form-control" placeholder="Enter a subject for the message" required />
                     </div>
                     <div class="form-group">
-                        <label for="description" class="align-text-top">Description</label>
+                        <label asp-for="Body" class="align-text-top">Description</label>
                         <br />
-                        <textarea class ="description" id="description" name="description" rows="5" placeholder="A short description of what you're looking for" required></textarea>
+                        <textarea asp-for="Body" class="description" rows="5" placeholder="A short description of what you're looking for" required></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                        <button class="btn btn-primary btn-sm">Send Email</button>
                     </div>
                 </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary btn-sm" id="sendEmailButton">Send Email</button>
             </div>
         </div>
     </div>
 </div>
 <!-- Contact Modal End -->
-
 <!-- Main Page Start -->
 <header>
     <div class="jumbotron text-center shadow mb-5">
@@ -93,27 +94,15 @@
     </div>
 </main>
 <!-- Main Page End -->
-    <!-- Timeline Start -->
-
-    <!-- Timeline End -->
-
-    <!-- Social Media Integration as sticky sidebar -->
-
-    <!-- Social Media End -->
-
-    <!-- Skills Section Start (Bar Graphs) -->
-
-    <!-- Skills Section End -->
-
-    <!-- Pluralsight Profile Snapshot Start -->
-
-    <!-- Pluralsight End -->
-
-    <!-- Treehouse Report Card Start (JSON) -->
-
-    <!-- Treehouse End -->
-
-    <!-- Resume and Call To Action Start -->
-
-    <!-- Resume and CTA End -->
-
+<!-- Timeline Start -->
+<!-- Timeline End -->
+<!-- Social Media Integration as sticky sidebar -->
+<!-- Social Media End -->
+<!-- Skills Section Start (Bar Graphs) -->
+<!-- Skills Section End -->
+<!-- Pluralsight Profile Snapshot Start -->
+<!-- Pluralsight End -->
+<!-- Treehouse Report Card Start (JSON) -->
+<!-- Treehouse End -->
+<!-- Resume and Call To Action Start -->
+<!-- Resume and CTA End -->
