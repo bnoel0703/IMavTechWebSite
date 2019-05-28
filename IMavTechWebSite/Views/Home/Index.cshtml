@@ -1,4 +1,4 @@
-﻿@model IMavTechWebSite.Models.Email
+﻿@model IMavTechWebSite.Models.EmailModel
 
 @{
     ViewData["Title"] = "Home Page";
@@ -15,14 +15,14 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form asp-action="Post" asp-controller="Values" method="post">
+                <form asp-action="Post" asp-controller="Email" method="post">
                     <div class="form-group">
-                        <label asp-for="FromName">Your Name</label>
-                        <input asp-for="FromName" class="form-control" placeholder="Enter your name" required />
+                        <label asp-for="ClientName">Your Name</label>
+                        <input asp-for="ClientName" class="form-control" placeholder="Enter your name" required />
                     </div>
                     <div class="form-group">
-                        <label asp-for="FromEmailAddress">Email address</label>
-                        <input asp-for="FromEmailAddress" class="form-control" placeholder="Enter your preferred email address" required />
+                        <label asp-for="ClientEmailAddress">Email address</label>
+                        <input asp-for="ClientEmailAddress" class="form-control" placeholder="Enter your preferred email address" required />
                         <small class="form-text text-muted">I won't share your email with anyone. This is only for an open line of communication between you and I.</small>
                     </div>
                     <div class="form-group">

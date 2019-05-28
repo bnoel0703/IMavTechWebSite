@@ -34,27 +34,6 @@ namespace IMavTechWebSite.Controllers
         {
         }
 
-        private void Send(Email email)
-        {
-            var message = new MimeMessage();
-            message.From.Add(new MailboxAddress(email.FromName, email.FromEmailAddress));
-            message.To.Add(new MailboxAddress(email.ToName, email.ToEmailAddress));
-            message.Subject = email.Subject;
-            message.Body = new TextPart("plain text")
-            {
-                Text = email.Body
-            };
-
-            using (var client = new SmtpClient())
-            {
-                client.Connect(email.Smtp, email.Port);
-                client.Authenticate(email.UserName, email.Password);
-                client.Send(message);
-                client.Disconnect(true);
-            }
-        }
-
-
         // PUT api/values/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
