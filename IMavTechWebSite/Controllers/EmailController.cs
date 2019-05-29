@@ -55,7 +55,7 @@ namespace IMavTechWebSite.Controllers
         {
             var message = new MimeMessage();
             message.From.Add(new MailboxAddress(emailSettings.Value.ToName, emailSettings.Value.ToEmailAddress));
-            message.To.Add(new MailboxAddress(emailSettings.Value.ClientName, emailSettings.Value.ClientEmailAddress));
+            message.To.Add(new MailboxAddress(email.ClientName, email.ClientEmailAddress));
             message.Subject = "I got your email! Thank you!";
             message.Body = new TextPart("plain text")
             {
@@ -71,7 +71,6 @@ namespace IMavTechWebSite.Controllers
             }
 
             RedirectToAction("Index", "Home");
-
         }
 
         // PUT: api/Email/5
