@@ -18,7 +18,7 @@ body {
     padding-right: 15px;
 }
 
-#description {
+.description {
     width: 100%;
     resize: none;
 }

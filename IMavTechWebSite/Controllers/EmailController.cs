@@ -41,10 +41,14 @@ namespace IMavTechWebSite.Controllers
         [HttpPost]
         public void Post([FromForm] EmailModel email)
         {
-            var success = false;
+            bool success = true;
             SendMyselfEmail(email, success);
             if (success)
                 SendThankYouEmail(email);
+            else
+            {
+                RedirectToAction("Index", "Home");
+            }
         }
 
         private void SendThankYouEmail(EmailModel email)
