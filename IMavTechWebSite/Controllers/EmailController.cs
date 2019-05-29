@@ -49,6 +49,8 @@ namespace IMavTechWebSite.Controllers
             {
                 RedirectToAction("Index", "Home");
             }
+
+            RedirectToAction("Index", "Home");
         }
 
         private void SendThankYouEmail(EmailModel email)
@@ -70,7 +72,7 @@ namespace IMavTechWebSite.Controllers
                 client.Disconnect(true);
             }
 
-            RedirectToAction("Index", "Home");
+            RedirectToRoute("Home/Index");
         }
 
         // PUT: api/Email/5
