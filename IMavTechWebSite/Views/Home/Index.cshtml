@@ -17,26 +17,26 @@
             <div class="modal-body">
                 <form asp-action="Post" asp-controller="Email" method="post">
                     <div class="form-group">
-                        <label asp-for="ClientName">Your Name</label>
+                        <label asp-for="ClientName"></label>
                         <input asp-for="ClientName" class="form-control" placeholder="Enter your name" required />
                     </div>
                     <div class="form-group">
-                        <label asp-for="ClientEmailAddress">Email address</label>
+                        <label asp-for="ClientEmailAddress"></label>
                         <input asp-for="ClientEmailAddress" class="form-control" placeholder="Enter your preferred email address" required />
                         <small class="form-text text-muted">I won't share your email with anyone. This is only for an open line of communication between you and I.</small>
                     </div>
                     <div class="form-group">
-                        <label asp-for="Subject">Subject</label>
+                        <label asp-for="Subject"></label>
                         <input asp-for="Subject" class="form-control" placeholder="Enter a subject for the message" required />
                     </div>
                     <div class="form-group">
-                        <label asp-for="Body" class="align-text-top">Description</label>
+                        <label asp-for="Body" class="align-text-top"></label>
                         <br />
                         <textarea asp-for="Body" class="description" rows="5" placeholder="A short description of what you're looking for" required></textarea>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
-                        <button class="btn btn-primary btn-sm">Send Email</button>
+                        <button type="button"class="btn btn-primary btn-sm">Send Email</button>
                     </div>
                 </form>
             </div>

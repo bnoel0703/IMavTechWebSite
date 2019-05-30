@@ -41,18 +41,18 @@ namespace IMavTechWebSite.Controllers
         [HttpPost]
         public void Post([FromForm] EmailModel email)
         {
-            bool success = true;
-            SendMyselfEmail(email, success);
-            if (success)
-                SendThankYouEmail(email);
-            else
-            {
-                RedirectToAction("Index", "Home");
-            }
+            //TODO: Rename method
+            SendMyselfEmail(email);
 
-            RedirectToAction("Index", "Home");
+            //This redirection doesn't work at all
+            //TODO: Finish AJAX so redirection attempt isn't needed
+            RedirectToAction(controllerName:"Home", actionName:"Index");
         }
 
+        /// <summary>
+        /// Follow up email that goes out to the user
+        /// </summary>
+        /// <param name="email">The Email Object</param>
         private void SendThankYouEmail(EmailModel email)
         {
             var message = new MimeMessage();
@@ -71,8 +71,6 @@ namespace IMavTechWebSite.Controllers
                 client.Send(message);
                 client.Disconnect(true);
             }
-
-            RedirectToRoute("Home/Index");
         }
 
         // PUT: api/Email/5
@@ -87,34 +85,33 @@ namespace IMavTechWebSite.Controllers
         {
         }
 
-        private bool SendMyselfEmail(EmailModel email, bool success)
+        /// <summary>
+        /// Sends first email that will go to me through the web server. If successful, second email will be sent.
+        /// </summary>
+        /// <param name="email">The Email Object</param>
+        private void SendMyselfEmail(EmailModel email)
         {
-            try
+            //TODO: Separate this logic into refactored methods for reusability
+            // Method 1 - Build email here
+            var message = new MimeMessage();
+            message.From.Add(new MailboxAddress(emailSettings.Value.FromName, emailSettings.Value.FromEmailAddress));
+            message.To.Add(new MailboxAddress(emailSettings.Value.ToName, emailSettings.Value.ToEmailAddress));
+            message.Subject = $"{email.ClientName} sent a message. '{email.Subject}'";
+            message.Body = new TextPart("plain text")
             {
-                var message = new MimeMessage();
-                message.From.Add(new MailboxAddress(emailSettings.Value.FromName, emailSettings.Value.FromEmailAddress));
-                message.To.Add(new MailboxAddress(emailSettings.Value.ToName, emailSettings.Value.ToEmailAddress));
-                message.Subject = $"{email.ClientName} sent a message. '{email.Subject}'";
-                message.Body = new TextPart("plain text")
-                {
-                    Text = $"{email.Body} | Respond to {email.ClientEmailAddress} if interested."
-                };
+                Text = $"{email.Body} | Respond to {email.ClientEmailAddress} if interested."
+            };
 
-                using (var client = new SmtpClient())
-                {
-                    client.Connect(emailSettings.Value.Smtp, Convert.ToInt32(emailSettings.Value.Port));
-                    client.Authenticate(emailSettings.Value.UserName, emailSettings.Value.Password);
-                    client.Send(message);
-                    client.Disconnect(true);
-                }
-
-                success = true;
-                return success;
-            }
-            catch (Exception ex)
+            // Method 2 - Send email here
+            using (var client = new SmtpClient())
             {
-                throw new Exception($"Something went wrong. {ex.Message}");
+                client.Connect(emailSettings.Value.Smtp, Convert.ToInt32(emailSettings.Value.Port));
+                client.Authenticate(emailSettings.Value.UserName, emailSettings.Value.Password);
+                client.Send(message);
+                client.Disconnect(true);
             }
+
+            SendThankYouEmail(email);
         }
     }
 }
