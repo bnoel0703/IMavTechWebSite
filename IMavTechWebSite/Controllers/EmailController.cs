@@ -16,6 +16,7 @@ namespace IMavTechWebSite.Controllers
     [ApiController]
     public class EmailController : ControllerBase
     {
+        private const string _followUpMessage = "Thanks for reaching out to me. I'll look over your message as soon as I can and get back to you.";
         private readonly IOptions<EmailModel> emailSettings;
 
         public EmailController(IOptions<EmailModel> email)
@@ -41,8 +42,7 @@ namespace IMavTechWebSite.Controllers
         [HttpPost]
         public void Post([FromForm] EmailModel email)
         {
-            //TODO: Rename method
-            SendMyselfEmail(email);
+            SendContactRequestEmail(email);
 
             //This redirection doesn't work at all
             //TODO: Finish AJAX so redirection attempt isn't needed
@@ -53,24 +53,14 @@ namespace IMavTechWebSite.Controllers
         /// Follow up email that goes out to the user
         /// </summary>
         /// <param name="email">The Email Object</param>
-        private void SendThankYouEmail(EmailModel email)
+        private void SendFollowUpEmail(EmailModel email)
         {
-            var message = new MimeMessage();
-            message.From.Add(new MailboxAddress(emailSettings.Value.ToName, emailSettings.Value.ToEmailAddress));
-            message.To.Add(new MailboxAddress(email.ClientName, email.ClientEmailAddress));
-            message.Subject = "I got your email! Thank you!";
-            message.Body = new TextPart("plain text")
-            {
-                Text = "Thanks for reaching out to me. I'll look over it as soon as I can and get back to you."
-            };
-
-            using (var client = new SmtpClient())
-            {
-                client.Connect(emailSettings.Value.Smtp, Convert.ToInt32(emailSettings.Value.Port));
-                client.Authenticate(emailSettings.Value.UserName, emailSettings.Value.Password);
-                client.Send(message);
-                client.Disconnect(true);
-            }
+            email.Body = _followUpMessage;
+            SendEmail(email.ClientName,
+                       email.ClientEmailAddress,
+                       emailSettings.Value.OwnerName,
+                       emailSettings.Value.OwnerEmailAddress,
+                       email);
         }
 
         // PUT: api/Email/5
@@ -86,23 +76,51 @@ namespace IMavTechWebSite.Controllers
         }
 
         /// <summary>
-        /// Sends first email that will go to me through the web server. If successful, second email will be sent.
+        /// Sends first email that will go to the owner through the web server. If successful, second email will be sent.
         /// </summary>
         /// <param name="email">The Email Object</param>
-        private void SendMyselfEmail(EmailModel email)
+        private void SendContactRequestEmail(EmailModel email)
         {
-            //TODO: Separate this logic into refactored methods for reusability
-            // Method 1 - Build email here
-            var message = new MimeMessage();
-            message.From.Add(new MailboxAddress(emailSettings.Value.FromName, emailSettings.Value.FromEmailAddress));
-            message.To.Add(new MailboxAddress(emailSettings.Value.ToName, emailSettings.Value.ToEmailAddress));
-            message.Subject = $"{email.ClientName} sent a message. '{email.Subject}'";
-            message.Body = new TextPart("plain text")
-            {
-                Text = $"{email.Body} | Respond to {email.ClientEmailAddress} if interested."
-            };
+            email.Body = $"{email.Body} | Respond to {email.ClientEmailAddress} if interested.";
+            SendEmail(emailSettings.Value.ServerName,
+                       emailSettings.Value.ServerEmailAddress,
+                       emailSettings.Value.OwnerName,
+                       emailSettings.Value.OwnerEmailAddress,
+                       email);
 
-            // Method 2 - Send email here
+            SendFollowUpEmail(email);
+        }
+
+        /// <summary>
+        /// First half of Mailkit API. Prepares the email for sending.
+        /// </summary>
+        /// <param name="senderName"></param>
+        /// <param name="senderEmailAddress"></param>
+        /// <param name="recipientName"></param>
+        /// <param name="recipientEmailAddress"></param>
+        /// <param name="email"></param>
+        private void SendEmail(string senderName, string senderEmailAddress, string recipientName, string recipientEmailAddress, EmailModel email)
+        {
+            var message = new MimeMessage();
+            message.From.Add(new MailboxAddress(senderName, senderEmailAddress));
+            message.To.Add(new MailboxAddress(recipientName, recipientEmailAddress));
+            message.Subject = $"{email.ClientName} sent a message. '{email.Subject}'";
+
+            var bodyBuilder = new BodyBuilder();
+            bodyBuilder.HtmlBody = $"<div>{email.Body}</div>";
+            bodyBuilder.TextBody = $"{email.Body}";
+
+            message.Body = bodyBuilder.ToMessageBody();
+
+            UseMailKitSmtp(message);
+        }
+
+        /// <summary>
+        /// Second half of Mailkit API. Sends the email over SMTP.
+        /// </summary>
+        /// <param name="message"></param>
+        private void UseMailKitSmtp(MimeMessage message)
+        {
             using (var client = new SmtpClient())
             {
                 client.Connect(emailSettings.Value.Smtp, Convert.ToInt32(emailSettings.Value.Port));
@@ -110,8 +128,6 @@ namespace IMavTechWebSite.Controllers
                 client.Send(message);
                 client.Disconnect(true);
             }
-
-            SendThankYouEmail(email);
         }
     }
 }

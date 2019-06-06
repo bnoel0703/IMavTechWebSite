@@ -11,24 +11,24 @@ namespace IMavTechWebSite.Models
     public class EmailModel
     {
         /// <summary>
-        /// Sender's name
+        /// Server's name
         /// </summary>
-        public string FromName { get; set; }
+        public string ServerName { get; set; }
 
         /// <summary>
-        /// Sender's email address
+        /// Server's email address
         /// </summary>
-        public string FromEmailAddress { get; set; }
+        public string ServerEmailAddress { get; set; }
 
         /// <summary>
-        /// Recipient's name
+        /// Owner's name
         /// </summary>
-        public string ToName { get; set; }
+        public string OwnerName { get; set; }
 
         /// <summary>
-        /// Recipient's email address
+        /// Owner's email address
         /// </summary>
-        public string ToEmailAddress { get; set; }
+        public string OwnerEmailAddress { get; set; }
 
         /// <summary>
         /// Name taken from contact modal
@@ -52,7 +52,7 @@ namespace IMavTechWebSite.Models
         public string Subject { get; set; }
 
         /// <summary>
-        /// Makes up body of email. Taken from contact modal
+        /// Makes up body of email. Taken from contact modal or overriden in method
         /// </summary>
         [Required]
         [Display(Name = "Description")]
