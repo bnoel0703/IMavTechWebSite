@@ -6,12 +6,24 @@
 $("#contactModalSendButton").on("click", (evt) => {
     evt.preventDefault();
     $.post("", $("form").serialize(), () => {
-        $("#contactModal").modal("hide");
+        hideContactmodal();
         $("#contactModal").on("hidden.bs.modal", (evt) => {
-            $("#contactButton").attr("title", "This is to prevent spam");
-            $("#contactButton").prop("disabled", true);
-            $("#emailAlert").removeClass("hide");
-            $("#emailAlert").addClass("show");
+            disableContactModalButton();
+            displayAlert();
         });
     });
 });
+
+function hideContactmodal() {
+    $("#contactModal").modal("hide");
+}
+
+function disableContactModalButton() {
+    $("#contactButton").attr("title", "This is to prevent spam");
+    $("#contactButton").prop("disabled", true);
+}
+
+function displayAlert() {
+    $("#emailAlert").removeClass("hide");
+    $("#emailAlert").addClass("show");
+}
