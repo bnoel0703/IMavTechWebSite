@@ -24,6 +24,8 @@ function disableContactModalButton() {
 }
 
 function displayAlert() {
+    $("#emailAlert").removeClass("fixed-bottom");
+    $("#emailAlert").addClass("fixed-top");
     $("#emailAlert").removeClass("hide");
     $("#emailAlert").addClass("show");
 }

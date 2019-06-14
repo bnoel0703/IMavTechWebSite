@@ -46,7 +46,7 @@ namespace IMavTechWebSite.Controllers
 
             //This redirection doesn't work at all
             //TODO: Finish AJAX so redirection attempt isn't needed
-            RedirectToAction(controllerName:"Home", actionName:"Index");
+            RedirectToAction(controllerName: "Home", actionName: "Index");
         }
 
         /// <summary>
@@ -56,11 +56,11 @@ namespace IMavTechWebSite.Controllers
         private void SendFollowUpEmail(EmailModel email)
         {
             email.Body = _followUpMessage;
-            SendEmail(email.ClientName,
-                       email.ClientEmailAddress,
-                       emailSettings.Value.OwnerName,
-                       emailSettings.Value.OwnerEmailAddress,
-                       email);
+            SendEmail(emailSettings.Value.OwnerName,
+                      emailSettings.Value.OwnerEmailAddress,
+                      email.ClientName,
+                      email.ClientEmailAddress,
+                      email);
         }
 
         // PUT: api/Email/5
