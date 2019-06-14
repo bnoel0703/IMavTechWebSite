@@ -5,7 +5,7 @@
 
 $("#contactModalSendButton").on("click", (evt) => {
     evt.preventDefault();
-    $.post("", $("form").serialize(), () => {
+    $.post("api/Email", $("form").serialize(), () => {
         hideContactmodal();
         $("#contactModal").on("hidden.bs.modal", (evt) => {
             disableContactModalButton();
