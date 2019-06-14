@@ -7,15 +7,15 @@
 //var xhr = new XMLHttpRequest();
 //document.getElementById("contactModalSendButton").onclick = function () {
 //    var userName = document.getElementById("ajaxPostTestBox").value;
-//    makeRequest('TextFile.txt', userName);
+//    makeRequest("TextFile.txt", userName);
 //};
 
-////document.getElementById("contactModalSendButton").addEventListener('click', makeRequest);
+////document.getElementById("contactModalSendButton").addEventListener("click", makeRequest);
 //function makeRequest(url, userName) {
 //    xhr.onreadystatechange = alertContents;
-//    xhr.open('POST', url);
-//    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-//    xhr.send('userName=' + encodeURIComponent(userName));
+//    xhr.open("POST", url);
+//    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+//    xhr.send("userName=" + encodeURIComponent(userName));
 //}
 
 //function alertContents() {
@@ -25,16 +25,20 @@
 //            alert(response.computedString);
 //        }
 //        else {
-//            alert('There was a problem with the request');
+//            alert("There was a problem with the request");
 //        }
 //    }
 //}
 
-$('#contactModalSendButton').on('click', (evt) => {
+$("#contactModalSendButton").on("click", (evt) => {
     evt.preventDefault();
-    $.post('api/Email', $('form').serialize(), () => {
-        $('#contactModalSendButton').attr("data-dismiss", "modal");
-        setTimeout(() => { alert("Posted with Jquery"); }, 1000);
+    $.post("api/Email", $("form").serialize(), () => {
+        $("#contactModal").modal("hide");
+        $("#contactModal").on("hidden.bs.modal", (evt) => {
+            alert("Email sent successfully");
+            $("#contactButton").attr("title", "This is to prevent spam");
+            $("#contactButton").prop("disabled", true);
+        });
     });
 });
 //TODO: Trigger absolute dismissable Alert slide down informing user of a successful email. Will slide up and hide after 10 seconds

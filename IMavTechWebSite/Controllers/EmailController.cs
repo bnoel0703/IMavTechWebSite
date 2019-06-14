@@ -106,9 +106,11 @@ namespace IMavTechWebSite.Controllers
             message.To.Add(new MailboxAddress(recipientName, recipientEmailAddress));
             message.Subject = $"{email.ClientName} sent a message. '{email.Subject}'";
 
-            var bodyBuilder = new BodyBuilder();
-            bodyBuilder.HtmlBody = $"<div>{email.Body}</div>";
-            bodyBuilder.TextBody = $"{email.Body}";
+            var bodyBuilder = new BodyBuilder
+            {
+                HtmlBody = $"<div>{email.Body}</div>",
+                TextBody = $"{email.Body}"
+            };
 
             message.Body = bodyBuilder.ToMessageBody();
 
