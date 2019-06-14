@@ -28,7 +28,7 @@ The main goal is to be a living resume. This website will showcase who I am as a
 #### TODO List
 
 * [x] Flesh out static pages(Index and About)
-* [ ] Add email functionality
+* [x] Add email functionality
 * [ ] Apply Styling to static pages
 * [ ] Add images
 * [ ] Add interactivity through Javascript/JQuery
