@@ -38,6 +38,8 @@ $("#contactModalSendButton").on("click", (evt) => {
             alert("Email sent successfully");
             $("#contactButton").attr("title", "This is to prevent spam");
             $("#contactButton").prop("disabled", true);
+            $("#emailAlert").removeClass("hide");
+            $("#emailAlert").addClass("show");
         });
     });
 });
