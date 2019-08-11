@@ -8,7 +8,7 @@
 <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header bg-light text-dark">
                 <h5 class="modal-title" id="contactModalLabel"><i class="far fa-envelope"></i>  Get in Touch</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -23,8 +23,10 @@
                     <div class="form-group">
                         <label asp-for="ClientEmailAddress"></label>
                         <input asp-for="ClientEmailAddress" id="ajaxPostTestBox" class="form-control" placeholder="Enter your preferred email address" required />
-                        <small class="form-text text-muted">I won't share your email wit
-                        h anyone. This is only for an open line of communication between you and I.</small>
+                        <small class="form-text text-muted">
+                            I won't share your email wit
+                            h anyone. This is only for an open line of communication between you and I.
+                        </small>
                     </div>
                     <div class="form-group">
                         <label asp-for="Subject"></label>
@@ -44,7 +46,8 @@
         </div>
     </div>
 </div>
-<div id="emailAlert" class="alert alert-success alert-dismissible fade hide fixed-bottom" role="alert">Email sent successfully. Be sure to check your spam just in case.
+<div id="emailAlert" class="alert alert-success alert-dismissible fade hide fixed-bottom" role="alert">
+    Email sent successfully. Be sure to check your spam just in case.
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
@@ -56,45 +59,53 @@
         <h1><strong>Bryan Noel</strong></h1>
         <h2><strong>Full Stack .Net Developer</strong></h2>
         <!-- Set Personal Logo as semi-transparent background image -->
-        <button id="contactButton" class="btn btn-lg btn-primary mt-2" data-toggle="modal" data-target="#contactModal"><i class="fas fa-envelope"></i>  Get in Touch</button>
+        <button id="contactButton" class="btn btn-lg btn-info mt-2" data-toggle="modal" data-target="#contactModal"><i class="fas fa-envelope"></i>  Get in Touch</button>
     </div>
 </header>
 
 <main>
-    <div class="row border border-bottom rounded shadow p-3 mb-5">
-        <div class="col-md-4">Image Placeholder</div> <!-- Personal photo... hopefully a better one -->
-        <div class="col-md-8">
-            <h3 class="lead">A Developer with confidence and expertise</h3>
-            <p>I am a developer with knowledge and proficiencies in both the back-end and front-end of application development.</p>
-            <p>Being a passionate and driven self-starter, I have picked up a number of technologies relatively quickly with little to no guidance along my journey.</p>
-            <p>
-                I strive to be a lifelong learner and there is no better way to continuously learn than to be a developer. New technologies arise on a very frequent basis and you have to be
-                up to date to remain relevant.
-            </p>
+    <div class="card pb-3 mb-5 rounded shadow">
+        <div class="row">
+            <div class="col-md-4">Image Placeholder</div> <!-- Personal photo... hopefully a better one -->
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h3 class="lead card-title">A Developer with confidence and expertise</h3>
+                    <p class="card-text">I am a developer with knowledge and proficiencies in both the back-end and front-end of application development.</p>
+                    <p class="card-text">Being a passionate and driven self-starter, I have picked up a number of technologies relatively quickly with little to no guidance along my journey.</p>
+                    <p class="card-text">
+                        I strive to be a lifelong learner and there is no better way to continuously learn than to be a developer. New technologies arise on a very frequent basis and you have to be
+                        up to date to remain relevant.
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="row border border-bottom rounded shadow p-3 mb-5">
-        <div class="col-md-8">
-            <h3 class="lead">A Skillset to Build Modern Applications</h3>
-            <p>I am well versed in multiple development stacks as well as being adept in both the front end and back end.</p>
-        </div>
-        <div class="col-md-4">
-            <div>
-                Microsoft .Net Stack
-                <ul>
-                    <li>C#</li>
-                    <li>ASP.Net MVC 5 & Core</li>
-                    <li>Entity Framework 6 & Core</li>
-                </ul>
-                Web Development Stack
-                <ul>
-                    <li>HTML</li>
-                    <li>CSS</li>
-                    <li>Javascript & Jquery</li>
-                    <li>Bootstrap</li>
-                    <li>Angular</li>
-                    <li>Typescript</li>
-                </ul>
+    <div class="card pb-3 mb-5 rounded shadow">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h3 class="lead card-title">A Skillset to Build Modern Applications</h3>
+                    <p class="card-text">I am well versed in multiple development stacks as well as being adept in both the front end and back end.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div>
+                    Microsoft .Net Stack
+                    <ul>
+                        <li>C#</li>
+                        <li>ASP.Net MVC 5 & Core</li>
+                        <li>Entity Framework 6 & Core</li>
+                    </ul>
+                    Web Development Stack
+                    <ul>
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>Javascript & Jquery</li>
+                        <li>Bootstrap</li>
+                        <li>Angular</li>
+                        <li>Typescript</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
