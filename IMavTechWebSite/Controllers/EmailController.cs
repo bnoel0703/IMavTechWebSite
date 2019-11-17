@@ -42,7 +42,7 @@ namespace IMavTechWebSite.Controllers
         [HttpPost]
         public void Post([FromForm] EmailModel email)
         {
-            SendContactRequestEmail(email);
+            //SendContactRequestEmail(email);
 
             //This redirection doesn't work at all
             //TODO: Finish AJAX so redirection attempt isn't needed
